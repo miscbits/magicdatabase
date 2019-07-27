@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTable extends Migration
+class CreateCardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,10 @@ class CreateTable extends Migration
      */
     public function up()
     {
-        Schema::create('', function (Blueprint $table) {
+        Schema::create('cards', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('commander');
-            $table->string('partner');
-            $table->string('format');
-            $table->text('list');
+            $table->tinyinteger('quantity');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateTable extends Migration
      */
     public function down()
     {
-        Schema::drop('');
+        Schema::drop('cards');
     }
 }
