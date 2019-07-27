@@ -13,10 +13,13 @@ class CreateCardsTable extends Migration
     public function up()
     {
         Schema::create('cards', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->tinyinteger('quantity');
+            $table->boolean('foil')->default('false');
             $table->timestamps();
+
+            $table->unique(['name', 'foil']);
         });
     }
 
