@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "API is live";
 });
+
+Route::apiResource('cards', CardController::class);
+Route::apiResource('decks', DeckController::class);

@@ -44,4 +44,8 @@ return [
         ],
     ],
 
+    'singleauth' => [
+        'secret' => env('APP_POST_SECRET')
+    ]
+
 ];
