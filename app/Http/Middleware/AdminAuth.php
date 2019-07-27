@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Config;
-
+use Exception;
 class AdminAuth
 {
     /**
@@ -18,10 +18,10 @@ class AdminAuth
     {
         // we want secret key to not be false in case the default value gets 
         // used and an attacker simply passes in false in the header
-        $secret_key = $request->header('secret_key');
+        $secret_key = $request->header('Secret-Key', false);
         if ($secret_key !== false &&
-            $secret_key === Config::get('key', false)) {
-            return $next($request);    
+            $secret_key === Config::get('services.singleauth.secret', false)) {
+            return $next($request);
         }
 
         abort(404);
